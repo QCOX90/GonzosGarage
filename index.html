@@ -193,12 +193,19 @@
     }
 
     .stats-grid,
-    .services-grid,
     .why-grid,
     .testimonial-grid,
     .hours-grid {
       display: grid;
       gap: 18px;
+    }
+
+    .services-grid,
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
     }
 
     .stats-grid {
@@ -337,8 +344,19 @@
       font-weight: 700;
     }
 
-    .services-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .service-card {
+      width: calc(33.333% - 12px);
+      min-width: 280px;
+      max-width: 360px;
+      flex: 0 1 calc(33.333% - 12px);
+    }
+
+    .gallery-card {
+      width: calc(33.333% - 12px);
+      min-width: 280px;
+      max-width: 360px;
+      flex: 0 1 calc(33.333% - 12px);
+      padding: 14px;
     }
 
     .service-card h3 {
@@ -354,12 +372,26 @@
     }
 
     .service-icon {
-      width: 54px;
-      height: 54px;
+      width: 58px;
+      height: 58px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(183,154,116,0.18), rgba(183,154,116,0.07));
+      background: linear-gradient(135deg, rgba(183,154,116,0.2), rgba(183,154,116,0.08));
       border: 1px solid rgba(140,115,84,0.12);
       margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--bronze-dark);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .why-grid {
@@ -413,6 +445,15 @@
       letter-spacing: 0.24em;
       color: var(--bronze-dark);
       font-weight: 800;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      display: block;
     }
 
     .map-frame {
@@ -499,9 +540,14 @@
 
     @media (max-width: 1024px) {
       .hero-grid,
-      .why-grid,
-      .services-grid {
+      .why-grid {
         grid-template-columns: 1fr;
+      }
+
+      .service-card,
+      .gallery-card {
+        width: calc(50% - 9px);
+        flex-basis: calc(50% - 9px);
       }
     }
 
@@ -523,6 +569,15 @@
       .footer-row {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .service-card,
+      .gallery-card {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+      .gallery-card img {
+        height: 220px;
       }
       .floating-call { display: flex; }
       footer { padding-bottom: 120px; }
@@ -579,6 +634,34 @@
       </div>
     </section>
 
+    <!-- REPUTATION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-tag">Reputation</div>
+          <h2 class="section-title">Trusted by local drivers</h2>
+          <p class="section-copy">Known for honest service, fair pricing, and dependable repair work. Customers consistently highlight quality work and clear communication.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="card stat-card">
+            <strong style="font-size:2rem; display:block;">5.0 ★</strong>
+            Verified CARFAX Rating
+          </div>
+          <div class="card stat-card">
+            <strong style="font-size:2rem; display:block;">100%</strong>
+            Recommend on Facebook
+          </div>
+          <div class="card stat-card">
+            <strong style="font-size:2rem; display:block;">2023 & 2024</strong>
+            Nextdoor Favorite
+          </div>
+          <div class="card stat-card">
+            Honest • Reliable • Trusted
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section-intro">
@@ -606,14 +689,14 @@
           <p class="section-copy">Straightforward service designed to get you back on the road with confidence.</p>
         </div>
         <div class="services-grid">
-          <div class="card service-card"><div class="service-icon"></div><h3>General Auto Repair</h3><p>Dependable repair work for everyday vehicle issues with clear communication and honest service.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Engine Service &amp; Repair</h3><p>Experienced engine work focused on accurate diagnosis and repairs done the right way.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Auto Maintenance</h3><p>Keep your vehicle running better with regular upkeep and preventive maintenance service.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Oil Changes</h3><p>Routine service completed with the same level of attention and care as larger repair jobs.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>A/C &amp; Heating Service</h3><p>Stay comfortable in every season with dependable climate system service and repairs.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Diagnostics &amp; Troubleshooting</h3><p>Thoughtful, experienced troubleshooting to help find the issue and recommend the right next step.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Metal Fabrication</h3><p>Custom metal work and fabrication solutions built to your needs with precision and durability.</p></div>
-          <div class="card service-card"><div class="service-icon"></div><h3>Custom Metal Machining</h3><p>Specialized machining services for custom parts, repairs, and performance applications.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 13l3-3 4 4 9-9"/><path d="M3 20h18"/></svg></div><h3>General Auto Repair</h3><p>Dependable repair work for everyday vehicle issues with clear communication and honest service.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 4c4 1 6 4 6 8 0 5-4 8-8 8s-8-3-8-8c0-4 2-7 6-8"/><path d="M9 11h6"/><path d="M12 8v6"/></svg></div><h3>Engine Service &amp; Repair</h3><p>Experienced engine work focused on accurate diagnosis and repairs done the right way.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M6 7h12"/><path d="M6 12h12"/><path d="M6 17h8"/><path d="M18 5v14"/></svg></div><h3>Auto Maintenance</h3><p>Keep your vehicle running better with regular upkeep and preventive maintenance service.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M7 6h10"/><path d="M9 6V3h6v3"/><path d="M12 6v12"/><path d="M8 18h8"/></svg></div><h3>Oil Changes</h3><p>Routine service completed with the same level of attention and care as larger repair jobs.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M7 14a5 5 0 1 1 10 0"/><path d="M12 19v2"/><path d="M5 10l-2-2"/><path d="M19 10l2-2"/></svg></div><h3>A/C &amp; Heating Service</h3><p>Stay comfortable in every season with dependable climate system service and repairs.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.35-4.35"/></svg></div><h3>Diagnostics &amp; Troubleshooting</h3><p>Thoughtful, experienced troubleshooting to help find the issue and recommend the right next step.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18V9l4-3 4 3v9"/><path d="M10 6V4h4v2"/></svg></div><h3>Metal Fabrication</h3><p>Custom metal work and fabrication solutions built to your needs with precision and durability.</p></div>
+          <div class="card service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M5 19l6-6"/><path d="M13 11l6-6"/><path d="M14 5l5 5"/><path d="M3 21l5-1-4-4-1 5z"/></svg></div><h3>Custom Metal Machining</h3><p>Specialized machining services for custom parts, repairs, and performance applications.</p></div>
         </div>
       </div>
     </section>
@@ -626,12 +709,12 @@
           <h2 class="section-title">Recent work</h2>
           <p class="section-copy">Real work from the shop showing the quality and type of service you can expect.</p>
         </div>
-        <div class="services-grid">
-          <div class="card"><img src="image1.jpg" alt="Shop work 1" /></div>
-          <div class="card"><img src="image2.jpg" alt="Shop work 2" /></div>
-          <div class="card"><img src="image3.jpg" alt="Shop work 3" /></div>
-          <div class="card"><img src="image4.jpg" alt="Shop work 4" /></div>
-          <div class="card"><img src="image5.jpg" alt="Shop work 5" /></div>
+        <div class="gallery-grid">
+          <div class="card gallery-card"><img src="image1.jpg" alt="Classic car work by Gonzo's Garage & Machining" /></div>
+          <div class="card gallery-card"><img src="image2.jpg" alt="Mechanic performing undercar service at Gonzo's Garage & Machining" /></div>
+          <div class="card gallery-card"><img src="image3.jpg" alt="Branded Gonzo's Garage & Machining merchandise" /></div>
+          <div class="card gallery-card"><img src="image4.jpg" alt="Automotive service equipment at Gonzo's Garage & Machining" /></div>
+          <div class="card gallery-card"><img src="image5.jpg" alt="Performance car serviced by Gonzo's Garage & Machining" /></div>
         </div>
       </div>
     </section>
