@@ -30,6 +30,16 @@ export default function GonzosGarageWebsite() {
     },
   ];
 
+  const hours = [
+    ["Monday", "8:00 AM - 5:00 PM"],
+    ["Tuesday", "8:00 AM - 5:00 PM"],
+    ["Wednesday", "8:00 AM - 5:00 PM"],
+    ["Thursday", "8:00 AM - 5:00 PM"],
+    ["Friday", "8:00 AM - 5:00 PM"],
+    ["Saturday", "Closed"],
+    ["Sunday", "Closed"],
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* HEADER */}
@@ -108,6 +118,30 @@ export default function GonzosGarageWebsite() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOURS */}
+      <section className="border-t border-white/10 bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-400">Hours</p>
+            <h2 className="text-3xl font-black md:text-5xl">Shop hours</h2>
+            <p className="mt-4 text-lg text-zinc-300">
+              Call during business hours to book service or ask about your vehicle.
+            </p>
+          </div>
+          <div className="grid gap-3 md:max-w-2xl">
+            {hours.map(([day, time]) => (
+              <div
+                key={day}
+                className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4"
+              >
+                <span className="font-semibold text-white">{day}</span>
+                <span className="text-zinc-300">{time}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -192,6 +226,13 @@ export default function GonzosGarageWebsite() {
           <div>Call: (901) 409-6592</div>
         </div>
       </footer>
+
+      <a
+        href="tel:+19014096592"
+        className="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 rounded-2xl bg-white px-6 py-4 text-center text-lg font-bold text-black shadow-2xl shadow-black/40 transition hover:opacity-90 md:hidden"
+      >
+        Call Now • (901) 409-6592
+      </a>
     </div>
   );
 }
