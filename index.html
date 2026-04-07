@@ -1,193 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gonzo's Garage & Machining</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gonzo's Garage & Machining | Drummonds, TN Auto Repair</title>
+  <meta name="description" content="Gonzo's Garage & Machining in Drummonds, Tennessee provides dependable auto repair, engine service, maintenance, diagnostics, and honest local service. Call to book your appointment." />
+  <meta name="keywords" content="Gonzo's Garage & Machining, auto repair Drummonds TN, mechanic Drummonds Tennessee, engine repair, oil changes, diagnostics, auto maintenance" />
+  <meta name="author" content="Gonzo's Garage & Machining" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Gonzo's Garage & Machining" />
+  <meta property="og:description" content="Dependable automotive repair in Drummonds, Tennessee. Honest service, experienced work, and direct call-to-book scheduling." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="theme-color" content="#b79a74" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #080808;
+      --bronze: #b79a74;
+      --bronze-dark: #8c7354;
+      --bronze-light: #d9c6ab;
+      --cream: #f4f1eb;
+      --light-gray: #e5e2dc;
+      --mid-gray: #8b847b;
+      --text: #3a332d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(90, 72, 49, 0.14);
+      --shadow-soft: 0 12px 30px rgba(90, 72, 49, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #000;
-      color: #fff;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(183,154,116,0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(183,154,116,0.09), transparent 28%),
+        linear-gradient(180deg, #f7f4ef 0%, #f1ede7 48%, #ece7df 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
 
-    header {
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(183,154,116,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183,154,116,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.35;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0,0,0,0.03) 0.6px, transparent 0.8px);
+      background-size: 14px 14px;
+      opacity: 0.18;
+      z-index: -1;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+    .container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+
+    .topbar {
       position: sticky;
       top: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
       z-index: 1000;
+      background: rgba(8, 8, 8, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
+      gap: 18px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .btn,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
     }
 
     .btn {
-      background: #fff;
-      color: #000;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-decoration: none;
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
+      color: #1f1a16;
+      box-shadow: 0 10px 30px rgba(183,154,116,0.22);
+    }
+
+    .btn:hover,
+    .btn-outline:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      border: 1px solid rgba(140,115,84,0.22);
+      background: rgba(255,255,255,0.45);
+      box-shadow: var(--shadow-soft);
     }
 
     .hero {
-      padding: 80px 0;
+      padding: 72px 0 40px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
       align-items: center;
     }
 
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(183,154,116,0.12);
+      border: 1px solid rgba(140,115,84,0.14);
+      color: var(--bronze-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+    }
+
     .hero h1 {
-      font-size: 56px;
-      line-height: 1;
+      margin-top: 22px;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
       font-weight: 900;
+      color: #261f1a;
+      max-width: 700px;
     }
 
     .hero p {
-      margin-top: 20px;
-      color: #aaa;
-      font-size: 18px;
+      margin-top: 24px;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: #5f564e;
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stats-grid,
+    .services-grid,
+    .why-grid,
+    .testimonial-grid,
+    .hours-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 30px;
+    }
+
+    .card,
+    .glass-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(140,115,84,0.14);
+      box-shadow: var(--shadow);
     }
 
     .card {
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 25px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(10px);
+      padding: 26px;
     }
 
-    .section {
-      padding: 70px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(249,245,239,0.88));
+      padding: 30px;
     }
 
-    .grid {
+    .stat-card {
+      font-weight: 700;
+      color: #4a4139;
+    }
+
+    .logo-panel {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(242,236,228,0.95));
+    }
+
+    .logo-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(183,154,116,0.18), transparent 65%);
+      border-radius: 50%;
+    }
+
+    .logo-wrap {
+      border-radius: 24px;
+      background: linear-gradient(180deg, #1a1a1a, #080808);
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-grid {
       display: grid;
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .info-box {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(140,115,84,0.12);
+    }
+
+    .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--mid-gray);
+      font-weight: 800;
+    }
+
+    .value {
+      margin-top: 10px;
+      font-size: 1.15rem;
+      line-height: 1.45;
+      color: #2c2520;
+      font-weight: 800;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      color: var(--bronze-dark);
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin-top: 12px;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #261f1a;
+    }
+
+    .section-copy {
+      margin-top: 16px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #625950;
+    }
+
+    .hours-grid {
+      max-width: 760px;
+    }
 
     .hours-row {
       display: flex;
       justify-content: space-between;
-      padding: 15px 20px;
-      background: #111;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.1);
+      align-items: center;
+      gap: 20px;
+      padding: 18px 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(140,115,84,0.12);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hours-row strong {
+      font-size: 1rem;
+      color: #2b2520;
+    }
+
+    .hours-row span:last-child {
+      color: #5f564e;
+      font-weight: 700;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card h3 {
+      font-size: 1.35rem;
+      color: #2a231d;
+      font-weight: 900;
+    }
+
+    .service-card p {
+      margin-top: 12px;
+      line-height: 1.8;
+      color: #665d55;
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(183,154,116,0.18), rgba(183,154,116,0.07));
+      border: 1px solid rgba(140,115,84,0.12);
+      margin-bottom: 18px;
+    }
+
+    .why-grid {
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: stretch;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .metric-box {
+      border-radius: 24px;
+      padding: 24px;
+      background: rgba(183,154,116,0.08);
+      border: 1px solid rgba(140,115,84,0.12);
+    }
+
+    .metric-box strong {
+      display: block;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: #2b241d;
+      font-weight: 900;
+    }
+
+    .metric-box span {
+      display: block;
+      margin-top: 10px;
+      color: #675d54;
+      font-weight: 700;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quote {
+      font-size: 1.06rem;
+      line-height: 1.9;
+      color: #4f463f;
+    }
+
+    .quote-author {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--bronze-dark);
+      font-weight: 800;
+    }
+
+    .map-frame {
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid rgba(140,115,84,0.12);
+      box-shadow: var(--shadow);
+      min-height: 380px;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+      display: block;
+    }
+
+    .cta-box {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(238,231,221,0.92));
+      padding: 56px 28px;
+    }
+
+    .cta-box p {
+      max-width: 780px;
+      margin: 18px auto 0;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #615850;
     }
 
     footer {
-      padding: 40px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #aaa;
+      border-top: 1px solid rgba(140,115,84,0.12);
+      padding: 34px 0 120px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #5d554d;
+      font-size: 0.96rem;
+    }
+
+    .footer-row strong {
+      color: #2a231d;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .floating-call {
       position: fixed;
-      bottom: 20px;
       left: 50%;
+      bottom: 22px;
       transform: translateX(-50%);
-      width: calc(100% - 40px);
-      max-width: 400px;
-      text-align: center;
-      background: #fff;
-      color: #000;
-      padding: 15px;
-      border-radius: 999px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 1200;
+      width: min(420px, calc(100% - 28px));
+      min-height: 58px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
+      color: #1f1a16;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      font-weight: 900;
+      font-size: 1rem;
+      box-shadow: 0 18px 40px rgba(90, 72, 49, 0.25);
+      animation: pulseCall 2s infinite;
     }
 
-    @media(max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 40px; }
+    .desktop-pulse {
+      animation: pulseCall 2s infinite;
+    }
+
+    @keyframes pulseCall {
+      0% { box-shadow: 0 0 0 0 rgba(183,154,116,0.42), 0 18px 40px rgba(90, 72, 49, 0.18); }
+      70% { box-shadow: 0 0 0 16px rgba(183,154,116,0), 0 18px 40px rgba(90, 72, 49, 0.18); }
+      100% { box-shadow: 0 0 0 0 rgba(183,154,116,0), 0 18px 40px rgba(90, 72, 49, 0.18); }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .why-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 68px 0; }
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .hero { padding-top: 48px; }
+      .hero h1 { line-height: 1.02; }
+      .hero-actions,
+      .stats-grid,
+      .info-grid,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+      .hours-row,
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .floating-call { display: flex; }
+      footer { padding-bottom: 120px; }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <div class="container nav">
-    <div>
-      <strong>Gonzo's Garage & Machining</strong><br>
-      <small>Drummonds, Tennessee</small>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-title">Gonzo's Garage &amp; Machining</div>
+        <div class="brand-sub">Drummonds, Tennessee</div>
+      </div>
+      <a href="tel:+19014096592" class="btn desktop-pulse">Call Now</a>
     </div>
-    <a href="tel:+19014096592" class="btn">Call Now</a>
-  </div>
-</header>
+  </header>
 
-<section class="hero container">
-  <div>
-    <h1>Honest repair. Reliable work. No runaround.</h1>
-    <p>Gonzo's Garage & Machining provides dependable automotive repair. Call directly to schedule service.</p>
-    <br>
-    <a href="tel:+19014096592" class="btn">Call (901) 409-6592</a>
-  </div>
-  <div class="card">
-    <img src="logo.png" style="width:100%; border-radius:15px;">
-    <p style="margin-top:15px;">229 Dacus Rd<br>Drummonds, TN</p>
-  </div>
-</section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Veteran Owned • 30+ Years Experience</div>
+          <h1>Honest repair. Reliable work. High-quality local service.</h1>
+          <p>
+            Gonzo's Garage &amp; Machining provides dependable automotive repair in Drummonds, Tennessee. From maintenance and diagnostics to engine repair, the focus is simple: solid work, honest communication, and service you can trust.
+          </p>
+          <div class="hero-actions">
+            <a href="tel:+19014096592" class="btn">Call (901) 409-6592</a>
+            <a href="#location" class="btn-outline">View Location</a>
+          </div>
+          <div class="stats-grid">
+            <div class="card stat-card">Veteran owned and operated</div>
+            <div class="card stat-card">Trusted, honest local service</div>
+            <div class="card stat-card">Serving Drummonds and surrounding areas</div>
+            <div class="card stat-card">Call directly to book an appointment</div>
+          </div>
+        </div>
 
-<section class="section container">
-  <h2>Shop Hours</h2>
-  <div class="grid" style="margin-top:20px;">
-    <div class="hours-row"><span>Monday</span><span>8-5</span></div>
-    <div class="hours-row"><span>Tuesday</span><span>8-5</span></div>
-    <div class="hours-row"><span>Wednesday</span><span>8-5</span></div>
-    <div class="hours-row"><span>Thursday</span><span>8-5</span></div>
-    <div class="hours-row"><span>Friday</span><span>8-5</span></div>
-    <div class="hours-row"><span>Saturday</span><span>Closed</span></div>
-    <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
-  </div>
-</section>
+        <div class="glass-card logo-panel">
+          <div class="logo-wrap">
+            <img src="logo.png" alt="Gonzo's Garage & Machining logo" />
+          </div>
+          <div class="info-grid">
+            <div class="info-box">
+              <div class="label">Phone</div>
+              <div class="value">(901) 409-6592</div>
+            </div>
+            <div class="info-box">
+              <div class="label">Location</div>
+              <div class="value">229 Dacus Rd<br />Drummonds, TN 38023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section container">
-  <h2>Services</h2>
-  <div class="grid grid-3" style="margin-top:20px;">
-    <div class="card">General Auto Repair</div>
-    <div class="card">Engine Repair</div>
-    <div class="card">Maintenance</div>
-    <div class="card">Oil Changes</div>
-    <div class="card">A/C & Heating</div>
-    <div class="card">Diagnostics</div>
-  </div>
-</section>
+    <section class="section">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-tag">Hours</div>
+          <h2 class="section-title">Shop hours</h2>
+          <p class="section-copy">Call during business hours to schedule service or ask about your vehicle.</p>
+        </div>
+        <div class="hours-grid">
+          <div class="hours-row"><strong>Monday</strong><span>8:00 AM - 5:00 PM</span></div>
+          <div class="hours-row"><strong>Tuesday</strong><span>8:00 AM - 5:00 PM</span></div>
+          <div class="hours-row"><strong>Wednesday</strong><span>8:00 AM - 5:00 PM</span></div>
+          <div class="hours-row"><strong>Thursday</strong><span>8:00 AM - 5:00 PM</span></div>
+          <div class="hours-row"><strong>Friday</strong><span>8:00 AM - 5:00 PM</span></div>
+          <div class="hours-row"><strong>Saturday</strong><span>Closed</span></div>
+          <div class="hours-row"><strong>Sunday</strong><span>Closed</span></div>
+        </div>
+      </div>
+    </section>
 
-<section class="section container">
-  <h2>Why Choose Us</h2>
-  <div class="grid grid-2" style="margin-top:20px;">
-    <div class="card">30+ Years Experience</div>
-    <div class="card">Veteran Owned</div>
-  </div>
-</section>
+    <section class="section">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-tag">Services</div>
+          <h2 class="section-title">Quality automotive repair services</h2>
+          <p class="section-copy">Straightforward service designed to get you back on the road with confidence.</p>
+        </div>
+        <div class="services-grid">
+          <div class="card service-card"><div class="service-icon"></div><h3>General Auto Repair</h3><p>Dependable repair work for everyday vehicle issues with clear communication and honest service.</p></div>
+          <div class="card service-card"><div class="service-icon"></div><h3>Engine Service &amp; Repair</h3><p>Experienced engine work focused on accurate diagnosis and repairs done the right way.</p></div>
+          <div class="card service-card"><div class="service-icon"></div><h3>Auto Maintenance</h3><p>Keep your vehicle running better with regular upkeep and preventive maintenance service.</p></div>
+          <div class="card service-card"><div class="service-icon"></div><h3>Oil Changes</h3><p>Routine service completed with the same level of attention and care as larger repair jobs.</p></div>
+          <div class="card service-card"><div class="service-icon"></div><h3>A/C &amp; Heating Service</h3><p>Stay comfortable in every season with dependable climate system service and repairs.</p></div>
+          <div class="card service-card"><div class="service-icon"></div><h3>Diagnostics &amp; Troubleshooting</h3><p>Thoughtful, experienced troubleshooting to help find the issue and recommend the right next step.</p></div>
+        </div>
+      </div>
+    </section>
 
-<section class="section container" style="text-align:center;">
-  <h2>Call to Book</h2>
-  <br>
-  <a href="tel:+19014096592" class="btn">(901) 409-6592</a>
-</section>
+    <section class="section">
+      <div class="container why-grid">
+        <div class="glass-card">
+          <div class="section-tag">Why Choose Us</div>
+          <h2 class="section-title">A shop you can trust</h2>
+          <p class="section-copy">
+            Gonzo's Garage &amp; Machining is built on experience, honesty, and word-of-mouth trust. No gimmicks. No unnecessary upselling. Just dependable service from a local shop that cares about doing the job right.
+          </p>
+          <div class="metric-grid">
+            <div class="metric-box"><strong>30+</strong><span>Years experience</span></div>
+            <div class="metric-box"><strong>Local</strong><span>Drummonds, Tennessee</span></div>
+          </div>
+        </div>
 
-<footer class="container">
-  Gonzo's Garage & Machining • Drummonds, TN
-</footer>
+        <div>
+          <div class="section-intro" style="margin-bottom:18px;">
+            <div class="section-tag">Testimonials</div>
+            <h2 class="section-title">What customers say</h2>
+          </div>
+          <div class="testimonial-grid">
+            <div class="card"><div class="quote">“Great folks doing great work and always take care of us.”</div><div class="quote-author">Customer Review</div></div>
+            <div class="card"><div class="quote">“Fair pricing and reliable work every time.”</div><div class="quote-author">Customer Review</div></div>
+            <div class="card"><div class="quote">“Friendly, honest, and dependable service.”</div><div class="quote-author">Customer Review</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<a href="tel:+19014096592" class="floating-call">Call Now (901) 409-6592</a>
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-tag">Location</div>
+          <h2 class="section-title">Find the shop</h2>
+          <p class="section-copy">Conveniently located in Drummonds, Tennessee. Use the map below for directions.</p>
+        </div>
+        <div class="map-frame">
+          <iframe
+            title="Gonzo's Garage & Machining location map"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=229%20Dacus%20Rd%2C%20Drummonds%2C%20TN%2038023&z=14&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="glass-card cta-box">
+          <div class="section-tag">Contact</div>
+          <h2 class="section-title">Call to book your service</h2>
+          <p>No online forms. No confusing steps. Just call directly and get taken care of.</p>
+          <div class="hero-actions" style="justify-content:center; margin-top:28px;">
+            <a href="tel:+19014096592" class="btn desktop-pulse">(901) 409-6592</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        <strong>Gonzo's Garage &amp; Machining</strong><br />
+        229 Dacus Rd, Drummonds, TN 38023
+      </div>
+      <div>Call: (901) 409-6592</div>
+    </div>
+  </footer>
+
+  <a href="tel:+19014096592" class="floating-call">Call Now • (901) 409-6592</a>
 </body>
 </html>
