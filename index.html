@@ -1,0 +1,197 @@
+export default function GonzosGarageWebsite() {
+  const services = [
+    "General Auto Repair",
+    "Engine Service & Repair",
+    "Auto Maintenance",
+    "Oil Changes",
+    "A/C & Heating Service",
+    "Diagnostics & Troubleshooting",
+  ];
+
+  const highlights = [
+    "Veteran owned and operated",
+    "30+ years of experience",
+    "Local Drummonds, Tennessee shop",
+    "Trusted, honest service",
+  ];
+
+  const reviews = [
+    {
+      quote: "Great folks doing great work and always take care of us.",
+      author: "Customer",
+    },
+    {
+      quote: "Fair pricing and reliable work every time.",
+      author: "Customer",
+    },
+    {
+      quote: "Friendly, honest, and dependable service.",
+      author: "Customer",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* HEADER */}
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <div>
+            <p className="text-xl font-black tracking-wide">Gonzo&apos;s Garage &amp; Machining</p>
+            <p className="text-sm text-zinc-400">Drummonds, Tennessee</p>
+          </div>
+          <a
+            href="tel:+19014096592"
+            className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-black transition hover:opacity-90"
+          >
+            Call Now
+          </a>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_30%)]" />
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center md:py-24">
+          <div className="space-y-6">
+            <div className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-zinc-300">
+              Veteran Owned • 30+ Years Experience
+            </div>
+            <h1 className="text-5xl font-black leading-tight md:text-7xl">
+              Honest repair. Reliable work. No runaround.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-zinc-300">
+              Gonzo&apos;s Garage &amp; Machining provides dependable automotive repair for drivers in Drummonds and surrounding areas. Call directly to schedule service.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="tel:+19014096592"
+                className="rounded-2xl bg-white px-6 py-3 font-semibold text-black transition hover:opacity-90"
+              >
+                Call (901) 409-6592
+              </a>
+              <a
+                href="https://maps.google.com/?q=229+Dacus+Rd+Drummonds+TN+38023"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-white hover:bg-white hover:text-black"
+              >
+                Get Directions
+              </a>
+            </div>
+            <div className="grid gap-4 pt-4 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-zinc-200">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-6 shadow-2xl">
+              <div className="mb-6 rounded-[1.5rem] border border-white/10 bg-black p-6">
+                <img
+                  src="/logo.png"
+                  alt="Gonzo's Garage and Machining logo"
+                  className="mx-auto max-h-[420px] w-full rounded-2xl object-contain"
+                />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-sm text-zinc-400">Phone</p>
+                  <p className="mt-1 text-lg font-bold">(901) 409-6592</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-sm text-zinc-400">Location</p>
+                  <p className="mt-1 text-lg font-bold">229 Dacus Rd</p>
+                  <p className="text-sm text-zinc-300">Drummonds, TN 38023</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="border-t border-white/10 bg-zinc-950">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-400">Services</p>
+            <h2 className="text-3xl font-black md:text-5xl">Quality automotive repair services</h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service) => (
+              <div key={service} className="rounded-[1.75rem] border border-white/10 bg-black p-6">
+                <h3 className="text-xl font-bold">{service}</h3>
+                <p className="mt-3 text-zinc-400">
+                  Professional, straightforward service focused on getting you back on the road.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE */}
+      <section className="border-t border-white/10 bg-black">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 md:grid-cols-[1.2fr_0.8fr] md:py-20">
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-400">Why Choose Us</p>
+            <h2 className="text-3xl font-black md:text-5xl">A shop you can trust</h2>
+            <p className="mt-5 text-lg leading-8 text-zinc-300">
+              Built on experience, honesty, and word-of-mouth reputation. No upselling, no gimmicks — just solid work done right.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-black p-5">
+                <p className="text-4xl font-black">30+</p>
+                <p className="mt-2 text-zinc-400">Years experience</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black p-5">
+                <p className="text-4xl font-black">Local</p>
+                <p className="mt-2 text-zinc-400">Drummonds, TN</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {reviews.map((review) => (
+              <div key={review.quote} className="rounded-[1.75rem] border border-white/10 bg-zinc-950 p-6">
+                <p className="text-lg text-zinc-200">“{review.quote}”</p>
+                <p className="mt-4 text-sm text-zinc-500">{review.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="border-t border-white/10 bg-zinc-950">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <div className="rounded-[2rem] border border-white/10 bg-black p-8 md:p-12 text-center">
+            <h2 className="text-3xl font-black md:text-5xl">Call to book your service</h2>
+            <p className="mt-5 text-lg text-zinc-300">
+              No online booking — just call directly and get taken care of.
+            </p>
+            <a
+              href="tel:+19014096592"
+              className="mt-8 inline-block rounded-2xl bg-white px-8 py-4 text-xl font-semibold text-black transition hover:opacity-90"
+            >
+              (901) 409-6592
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 bg-black">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="font-semibold text-white">Gonzo&apos;s Garage &amp; Machining</p>
+            <p>229 Dacus Rd, Drummonds, TN 38023</p>
+          </div>
+          <div>Call: (901) 409-6592</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
